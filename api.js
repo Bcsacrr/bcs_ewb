@@ -1,7 +1,7 @@
 class ChatAPI {
     constructor(apiKey) {
         this.apiKey = apiKey;
-        this.baseURL = 'https://open.bigmodel.cn/api/paas/v4/chat/completions';
+        this.baseURL = 'http://localhost:3000/api/chat';
     }
 
     // 生成JWT Token
