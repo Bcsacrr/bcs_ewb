@@ -1,392 +1,1179 @@
-/* 全局样式 */
+/* 更新全局样式和配色方案 */
+:root {
+    --primary-color: #2d3436;
+    --secondary-color: #0984e3;
+    --accent-color: #00cec9;
+    --text-color: #2d3436;
+    --card-background: rgba(255, 255, 255, 0.98);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Poppins', 'Arial', sans-serif;
+    background: url('imags/背景.jpg') no-repeat center center fixed;
+    background-size: cover;
     min-height: 100vh;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 0;
 }
 
-/* 导航栏样式 */
+/* 导航栏动效优化 */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .nav-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
+.nav-brand span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-brand:hover {
+    transform: scale(1.05);
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: #666;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: #333;
-}
-
-/* 主要内容区域样式 */
-main {
-    margin-top: 80px;
-    padding: 2rem;
-}
-
-.section {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
-
-.card {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 100%;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .nav-links {
-        margin-top: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-links a {
-        font-size: 0.9rem;
-    }
-}
-
-/* 在文件末尾添加轮播组件样式 */
-.carousel {
     position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 2rem auto;
-    overflow: hidden;
-    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
 }
 
-.carousel-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    height: 500px;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.carousel-button {
+.nav-links a::after {
+    content: '';
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.7);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.carousel-button:hover {
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.carousel-button.prev {
-    left: 10px;
-}
-
-.carousel-button.next {
-    right: 10px;
-}
-
-.carousel-dots {
-    position: absolute;
-    bottom: 10px;
+    bottom: 0;
     left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: all 0.3s ease;
     transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
 }
 
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
+.nav-links a:hover::after {
+    width: 100%;
 }
 
-.dot.active {
-    background: white;
+/* 卡片动效 */
+.card {
+    width: 1200px;
+    padding: 4rem;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* 关于部分样式 */
-.about-content {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
+/* 技能标签动效 */
 .tag {
-    background: #f0f0f0;
+    background: var(--secondary-color);
+    color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
-    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-/* 作品集样式 */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+.tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* 作品集动效 */
 .portfolio-item {
     position: relative;
-    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .portfolio-item img {
     width: 100%;
-    height: 300px;
+    height: 250px;
     object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
 .portfolio-info {
-    padding: 1rem;
-    background: white;
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    transition: bottom 0.3s ease;
 }
 
-/* AI助手聊天界面样式 */
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-item:hover .portfolio-info {
+    bottom: 0;
+}
+
+/* 社交链接动效 */
+.social-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link i {
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover i {
+    transform: translateY(-5px);
+}
+
+/* 添加页面滚动动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    padding: 2rem 0;
+    margin: 2rem auto;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.section.active {
+    display: block;
+}
+
+/* 移除原有的隐藏样式 */
+#home, #about, #portfolio, #notebook, #ai-assistant, #contact {
+    display: block;
+}
+
+/* AI聊天界面优化 */
 .chat-container {
-    height: 400px;
-    display: flex;
-    flex-direction: column;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 .chat-messages {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     overflow-y: auto;
-    padding: 1rem;
-    background: #f5f5f5;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+}
+
+.message {
+    animation: messageSlide 0.3s ease;
+    text-align: left;
+    max-width: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1.2rem 1.5rem;
+    margin: 0.8rem 0;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .chat-input {
     display: flex;
-    gap: 0.5rem;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
 }
 
 .chat-input input {
     flex: 1;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.chat-input input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.1);
     outline: none;
 }
 
 .chat-input button {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 20px;
-    background: #007bff;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    background: var(--secondary-color);
     color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-input button:hover {
+    background: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* 轮播图样式恢复为单张照片 */
+.carousel {
+    position: relative;
+    width: 1000px;
+    height: 500px;
+    margin: 2rem auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover {
+    transform: scale(1.02);
+}
+
+/* 添加图片对样式 */
+.image-pair {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.image-pair img {
+    width: calc(50% - 10px);
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-pair img:hover {
+    transform: scale(1.02);
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 20px;
+}
+
+.carousel-control.next {
+    right: 20px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
     cursor: pointer;
 }
 
-/* 联系部分样式 */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+.indicator.active {
+    background: white;
 }
 
-.social-link {
+/* 优化按钮样式 */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-button:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.carousel-button i {
+    font-size: 1.2rem;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.carousel-button:hover i {
+    transform: scale(1.2);
+}
+
+.carousel-button.prev {
+    left: 20px;
+}
+
+.carousel-button.next {
+    right: 20px;
+}
+
+/* 优化导航点样式 */
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* 调整作品集网格布局 */
+.portfolio-grid {
+    width: 100%;
+    max-width: 1400px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* 标题样式居中 */
+h1, h2, h3, h4, p {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* 关于部分居中 */
+.about-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-decoration: none;
-    color: #333;
-    transition: transform 0.3s;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.social-link:hover {
-    transform: translateY(-5px);
+.profile-info {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.social-link i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+/* 技能标签居中 */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+/* 作品集信息居中 */
+.portfolio-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 聊天界面消息居中 */
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* 页脚内容居中 */
+.footer-section {
+    text-align: center;
+}
+
+.footer-section ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+/* 导航栏链接居中（在移动端） */
+@media (max-width: 768px) {
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* 主内容区域居中 */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1200px;
+    margin: 100px auto 0;
+    padding: 2rem;
+}
+
+/* 轮播按钮居中对齐 */
+.carousel-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 聊天输入框居中 */
+.chat-input {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 社交链接居中 */
+.social-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+/* 页脚完全居中 */
+.footer {
+    text-align: center;
+    padding: 3rem 1rem 1rem;
+    margin-top: 4rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.footer-content {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    justify-items: center;
 }
 
 /* 响应式调整 */
 @media (max-width: 768px) {
-    .about-content {
+    .navbar {
         flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
     }
     
-    .portfolio-grid {
-        grid-template-columns: 1fr;
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .carousel-slide {
+        height: 250px;
     }
     
     .social-links {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
     }
 }
 
-/* 页脚样式 */
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 3rem 0 1rem 0;
-    margin-top: 4rem;
+/* 确保所有图标居中 */
+i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 0 2rem;
+/* 确保所有按钮文字居中 */
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.footer-section h4 {
-    color: #fff;
+/* 添加统一的文字大小和间距 */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-    font-size: 1.2rem;
 }
 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
+p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
 }
 
-.footer-section ul li {
-    margin-bottom: 0.5rem;
+/* 首页卡片特殊样式 */
+#home .card {
+    width: 1200px;
+    max-width: 1600px;
+    padding: 4rem;
+    margin: 0 auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.footer-section ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+/* 调整首页标题和内容的样式 */
+#home h1 {
+    font-size: 3.2rem;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.footer-section ul li a:hover {
-    color: #007bff;
+#home p {
+    font-size: 1.3rem;
+    max-width: 1000px;
+    margin: 0 auto 2.5rem;
+    color: var(--text-color);
 }
 
-.footer-section ul li i {
-    margin-right: 0.5rem;
-    width: 20px;
+/* 添加烟花动画样式 */
+.firework {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 4px #fff,
+        0 0 8px #fff,
+        0 0 12px #fff;
+    pointer-events: none;
+    z-index: 9999;
 }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+.particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
 }
 
-/* 响应式页脚 */
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+/* 修改粒子动画 */
+@keyframes particle {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* 增加星星的亮度 */
+.star {
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* 头像样式 */
+.nav-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(9, 132, 227, 0.3);
+}
+
+/* 调整品牌文字样式 */
+.nav-brand span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 响应式调整 */
+@media (max-width: 1280px) {
+    .card, main {
+        width: 95%;
     }
     
-    .footer-section {
-        margin-bottom: 2rem;
+    .carousel {
+        width: 90%;
     }
 }
 
-/* 在现有的聊天样式中添加 */
-.message {
-    margin: 0.5rem 0;
-    padding: 0.8rem 1rem;
-    border-radius: 10px;
-    max-width: 80%;
+/* 记事本样式 */
+.notebook-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-.user-message {
-    background: #007bff;
+.notebook-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.notebook-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--secondary-color);
     color: white;
-    margin-left: auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
 }
 
-.ai-message {
-    background: #f0f0f0;
-    color: #333;
-    margin-right: auto;
+.notebook-btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
 }
 
-.loading {
-    background: #e9ecef;
+.notes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.note-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.note-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.note-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.note-btn {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.note-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.note-content {
+    width: 100%;
+    min-height: 150px;
+    padding: 0.8rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.6;
+}
+
+.note-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
     color: #666;
 }
 
-/* 添加打字动画效果 */
-@keyframes typing {
-    0% { opacity: .2; }
-    20% { opacity: 1; }
-    100% { opacity: .2; }
+/* 倒数日样式 */
+.countdown-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+    padding: 1rem;
 }
 
-.loading::after {
-    content: '...';
-    animation: typing 1.4s infinite;
+.countdown-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.countdown-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.countdown-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.countdown-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.countdown-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.countdown-date {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.countdown-days {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 1rem 0;
+}
+
+.countdown-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.countdown-btn {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.countdown-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.countdown-btn i {
+    font-size: 1.1rem;
+}
+
+.countdown-modified {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* 更新倒数日卡片样式 */
+.countdown-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.countdown-modified {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.countdown-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.countdown-btn {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.countdown-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.countdown-btn i {
+    font-size: 1.1rem;
+}
+
+/* 添加未来日期的样式 */
+.countdown-card.future .countdown-days {
+    color: #00b894; /* 使用一个偏绿色表示未来 */
+}
+
+/* 过去日期的样式 */
+.countdown-card.past .countdown-days {
+    color: #0984e3; /* 使用蓝色表示过去 */
+}
+
+.countdown-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.countdown-modified {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.countdown-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.countdown-btn {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.countdown-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.countdown-btn i {
+    font-size: 1.1rem;
+}
+
+/* 音乐播放器样式 */
+.music-player {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.song-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.artist-name {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.music-control-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.music-control-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#volumeSlider {
+    width: 80px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    outline: none;
+}
+
+#volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* 调整导航栏布局以适应音乐播放器 */
+.navbar {
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.nav-links {
+    margin: 0 2rem;
 } 
