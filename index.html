@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网站</title>
+    <!-- 引入 Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-brand">小卜同学</div>
+        <div class="nav-links">
+            <a href="#home" class="active">首页</a>
+            <a href="#about">关于</a>
+            <a href="#portfolio">作品集</a>
+            <a href="#ai-assistant">AI助手</a>
+            <a href="#contact">联系</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 首页部分 -->
+        <section id="home" class="section">
+            <div class="card">
+                <h1>欢迎来到我的个人网站</h1>
+                <p>这里是您的个人简介...</p>
+                
+                <!-- 添加轮播组件 -->
+                <div class="carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide">
+                            <img src="imgs/1.jpg" alt="图片1">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="imgs/2.jpg" alt="图片2">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="imgs/3.jpg" alt="图片3">
+                        </div>
+                    </div>
+                    <button class="carousel-button prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-button next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-dots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于部分 -->
+        <section id="about" class="section">
+            <div class="card">
+                <h2>关于我</h2>
+                <div class="about-content">
+                    <div class="profile-info">
+                        <h3>个人简介</h3>
+                        <p>热爱编程和新技术，专注于Web开发领域。喜欢探索AI和创新科技，致力于创造有价值的数字体验。</p>
+                        <div class="skills">
+                            <h3>技能专长</h3>
+                            <div class="skill-tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">AI开发</span>
+                                <span class="tag">Web设计</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品集部分 -->
+        <section id="portfolio" class="section">
+            <div class="card">
+                <h2>作品集</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="imgs/3.jpg" alt="项目1">
+                        <div class="portfolio-info">
+                            <h3>项目名称1</h3>
+                            <p>项目描述...</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="imgs/4.jpg" alt="项目2">
+                        <div class="portfolio-info">
+                            <h3>项目名称2</h3>
+                            <p>项目描述...</p>
+                        </div>
+                    </div>
+                    <!-- 可以添加更多项目 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- AI助手部分 -->
+        <section id="ai-assistant" class="section">
+            <div class="card">
+                <h2>AI助手</h2>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- 消息会在这里动态显示 -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="userInput" placeholder="输入您的问题...">
+                        <button id="sendMessage">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系部分 -->
+        <section id="contact" class="section">
+            <div class="card">
+                <h2>联系我</h2>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-weixin"></i>
+                        <span>微信</span>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- 添加页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>关于本站</h4>
+                <p>本网站采用现代Web技术构建，致力于展示个人作品和技术分享。</p>
+            </div>
+            <div class="footer-section">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#portfolio">作品集</a></li>
+                    <li><a href="#ai-assistant">AI助手</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>联系方式</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> email@example.com</li>
+                    <li><i class="fab fa-weixin"></i> WeChat: your_wechat</li>
+                    <li><i class="fab fa-github"></i> GitHub: your_github</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 小卜同学. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jsrsasign@10.5.24/lib/jsrsasign-all-min.js"></script>
+    <script>
+    // 创建一个兼容层
+    window.jwt = {
+        sign: function(payload, secret, options) {
+            const header = options.header || { alg: 'HS256', typ: 'JWT' };
+            return KJUR.jws.JWS.sign(header.alg, header, payload, secret);
+        }
+    };
+    </script>
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
